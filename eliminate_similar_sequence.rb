@@ -1,20 +1,32 @@
 def eliminateSimilarSubarray(user_sub_array, existing_array)
   user_sub_array = user_sub_array
   existing_array = existing_array
+  x = false
+  
 
   for i in 0..(existing_array.length-user_sub_array.length)
+    if x == true
+      if i == 0
+        i = 0
+      else
+        i = i-1
+      end
+      x = false
+    end
     if existing_array[i,user_sub_array.length] == user_sub_array
       existing_array.slice!(i,user_sub_array.length)
+      x = true
     end  
   end
   return existing_array
 
 end
-p eliminateSimilarSubarray([3,4],[1,2,3,4,1,2,3,4,4,3])
+p eliminateSimilarSubarray([1,2],[1,2,1,2,4,6,2,4,6,7])
 
 
-
-
+#  existing_array = [1,3]
+ 
+#  p existing_array[1,2]
 
 
 # dummy_array = []
